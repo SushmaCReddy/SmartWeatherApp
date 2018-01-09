@@ -74,7 +74,11 @@ class WebService: NSObject, URLSessionDelegate {
         if let urlParams = urlParams {
             url = URL(string: (endPoint + api) + "?" + urlParams.stringFromHttpParameters())!
         } else {
-            url = URL(string: urlStr)!
+            if let constructedURL = URL(string: urlStr) {
+                url = constructedURL
+            } else {
+                return /// Return as there is no valid url constructed
+            }
         }
         // building the request
         request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: TimeInterval(timeOut))
@@ -87,8 +91,7 @@ class WebService: NSObject, URLSessionDelegate {
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data, let response = response else {
                 session.invalidateAndCancel()
-                
-                let nsError = error! as NSError
+                guard let nsError = error as NSError? else { return }
                 ///Try max attempts, if done then call errorCallback
                 guard nsError.code == NSURLErrorTimedOut, self.attempt < self.maxAttempts else {
                     let wsError = WebServiceError(httpErrorCode: nsError.code, httpResponse: nil, responseBody: nil, error: nsError)

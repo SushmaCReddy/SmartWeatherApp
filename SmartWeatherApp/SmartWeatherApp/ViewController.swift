@@ -47,7 +47,13 @@ class ViewController: UIViewController {
             } else if let error = error {
                 print("**** failure in fetching search results ***** \(error)")
                 /// Update the screen with error alert or message. Also choose to send to metrics using page name for easy tracing
-            }
+                DispatchQueue.main.async {
+                    let alertVC = UIAlertController(title: "", message: "City Not Found. Try a new city", preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (ac) in
+                      }))
+                    self.present(alertVC, animated: true, completion: nil)
+                        }
+                }
         }
     }
 
@@ -55,26 +61,14 @@ class ViewController: UIViewController {
     ///
     /// - Parameter result: of type SearchResultObject, mostly is the response constructed from web service return
     fileprivate func updateUI(withResult result: WeatherModel) {
-        let error = result.isErrorMessage()
-        ///Introduced location not found under scuccess response, to display it on screen
-            if error.0 {
-                DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "", message: error.1, preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (ac) in
-                    //TODO: this is sample UI Alert VC for Messaging FW, so don't have to handle callback.
-                    }))
-                    self.present(alertVC, animated: true, completion: nil)
-                }
-
-            } else {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
                     self.city.text = result.city
                     self.country.text = result.country
                     self.weatherType.text = result.weatherDescription
                     self.currentTemperature.text = result.currenttemp
-                }
+            }
                 ///Call downloadImages to fetch images asynchronosly from service
-                searchViewModel.downloadImages(withIconId: result.iconId, completion: { (image, error) in
+            searchViewModel.downloadImages(withIconId: result.iconId, completion: { (image, error) in
                     if let image = image {
                         DispatchQueue.main.async {
                             self.weatherIcon.image = image
@@ -82,8 +76,7 @@ class ViewController: UIViewController {
                     } else if let error = error {
                         print("***** error in downloading image \(error) *****")
                     }
-                })
-        }
+            })
     }
     ///Sets default values to labels on UI. Called on view launch
     private func updateEmptyUI() {

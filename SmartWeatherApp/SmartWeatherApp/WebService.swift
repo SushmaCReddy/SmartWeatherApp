@@ -100,11 +100,22 @@ class WebService: NSObject, URLSessionDelegate {
                 return
             }
             let httpResponse: HTTPURLResponse = response as! HTTPURLResponse
+            // only consider statusCode 2xx as successful, all other cases need to handle as error for webservice call
+            if httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
+                
                 // building obj WebServiceResponse
                 let res = WebServiceResponse(statusCode: httpResponse.statusCode, url: httpResponse.url, body: data, httpResponse: response)
                 session.invalidateAndCancel()
                 // invoke callback for success handling
                 successCallback(res)
+
+            } else {
+                let wsError = WebServiceError(httpErrorCode: httpResponse.statusCode, httpResponse: httpResponse, responseBody: data, error: (error as NSError?))
+                session.invalidateAndCancel()
+                // invoke callback for error handling
+                errorCallback(wsError)
+            }
+            
         }
         task.resume()
     }

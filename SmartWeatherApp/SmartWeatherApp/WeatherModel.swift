@@ -21,7 +21,6 @@ class WeatherModel {
     /// - Parameter dataItems: The resource dictionary, containing details of weather
     init(dataItems: ResourceDictionary) {
         self.responseDictionary = dataItems
-        let _ = isErrorMessage()
     }
     
     lazy var city: String = {
@@ -49,11 +48,4 @@ class WeatherModel {
         guard  let main = responseDictionary["main"] as? ResourceDictionary, let temp =  main["temp"] else { return "" }
         return String(describing: temp)
     }()
-    
-    func isErrorMessage() -> (Bool, String) {
-        if let message = responseDictionary["message"] as? String {
-            return (true, message)
-        }
-        return (false, "")
-    }
 }

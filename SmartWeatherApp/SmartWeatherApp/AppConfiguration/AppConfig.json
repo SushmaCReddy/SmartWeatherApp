@@ -1,0 +1,12 @@
+{
+    "endpoint": {
+        "global": {
+            "apiGateway"    : "https://api.openweathermap.org/"
+        },
+        "api": {
+            "search"        :  "data/2.5/weather",
+            "weatherIcon"   :   "img/w/{iconId}.png"
+        }
+    }
+}
+

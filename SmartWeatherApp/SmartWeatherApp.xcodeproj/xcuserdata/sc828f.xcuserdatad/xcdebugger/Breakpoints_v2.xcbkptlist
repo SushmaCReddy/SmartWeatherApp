@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartWeatherApp/SearchModel.swift"
+            timestampString = "537222158.8623869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "SearchModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SmartWeatherApp.SearchModel.fetchSearchResults(forLocation: Swift.String, withCompletion: (SmartWeatherApp.ServiceResult&lt;SmartWeatherApp.SearchResultsModel&gt;) -&gt; ()) throws -&gt; ()"
+                  moduleName = "SmartWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sc828f/Desktop/SmartWeatherApp/SmartWeatherApp/SmartWeatherApp/SmartWeatherApp/SearchModel.swift"
+                  timestampString = "537216905.067416"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1791">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SmartWeatherApp.WebServiceResponse) -&gt; () in SmartWeatherApp.SearchModel.fetchSearchResults(forLocation: Swift.String, withCompletion: (SmartWeatherApp.ServiceResult&lt;SmartWeatherApp.SearchResultsModel&gt;) -&gt; ()) throws -&gt; ()"
+                  moduleName = "SmartWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sc828f/Desktop/SmartWeatherApp/SmartWeatherApp/SmartWeatherApp/SmartWeatherApp/SearchModel.swift"
+                  timestampString = "537216905.068741"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "45">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartWeatherApp/ViewController.swift"
+            timestampString = "537222158.8626831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "updateUI(withResult:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

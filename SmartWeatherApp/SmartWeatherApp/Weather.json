@@ -1,0 +1,43 @@
+
+{
+    "coord": {
+        "lon": -118.34,
+        "lat": 33.84
+    },
+    "weather": [
+                {
+                "id": 500,
+                "main": "Rain",
+                "description": "light rain",
+                "icon": "10n"
+                }
+                ],
+    "base": "stations",
+    "main": {
+        "temp": 289.53,
+        "pressure": 1011,
+        "humidity": 87,
+        "temp_min": 288.15,
+        "temp_max": 290.15
+    },
+    "visibility": 16093,
+    "wind": {
+        "speed": 3.1,
+        "deg": 80
+    },
+    "clouds": {
+        "all": 90
+    },
+    "dt": 1515476100,
+    "sys": {
+        "type": 1,
+        "id": 412,
+        "message": 0.0055,
+        "country": "US",
+        "sunrise": 1515509942,
+        "sunset": 1515546153
+    },
+    "id": 5403022,
+    "name": "Torrance",
+    "cod": 200
+}

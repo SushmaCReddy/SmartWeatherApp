@@ -5,23 +5,28 @@
 //  Created by msushmar on 1/9/18.
 //  Copyright © 2018 msushmar. All rights reserved.
 //
-
+/// Use this file to test WeatherModel file (To see if it is correctly taking values from response Dictionary)
 import XCTest
+@testable import SmartWeatherApp
 
-class WeatherModelModelTest: XCTestCase {
+class WeatherModelTest: XCTestCase {
    
-    var mockData: Dictionary<String, AnyObject> = [:]
+    var mockData: ResourceDictionary = [:]
+    var mockWeatherModel : WeatherModel!
+
     override func setUp() {
         super.setUp()
-        getMockWeatherJson()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.setMockWeatherJson()
+        mockWeatherModel = WeatherModel(dataItems: mockData)
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    func getMockWeatherJson() {
+    
+    /// This method reads mock weather.json from local and stores into mockData
+    func setMockWeatherJson() {
      
         if let configPath = Bundle.main.path(forResource: "Weather", ofType: "json") {
             do {
@@ -41,21 +46,28 @@ class WeatherModelModelTest: XCTestCase {
         }
     }
     func testInit() {
-       
+        let mockModel = WeatherModel(dataItems: mockData)
+        ///Test to see response dictionary is not empty, if sucessfully initialized
+         XCTAssertTrue(!mockModel.responseDictionary.isEmpty)
     }
-    func testLazyVariableValues() {
-        
-    }
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    ///MARK: - Methods
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    ///All the methods test the lazy variables in WeatherModel file, if they are returning correct strings
+    func testCityValues() {
+        XCTAssertEqual(mockWeatherModel.city, "Torrance")
     }
+    func testCountryValue() {
+        XCTAssertEqual(mockWeatherModel.country, "US")
+    }
+    func testIconIdValue() {
+        XCTAssertEqual(mockWeatherModel.iconId, "10n")
+    }
+    func testWeatherTypeValue() {
+        XCTAssertEqual(mockWeatherModel.weatherDescription, "light rain")
+    }
+    func testCurrentTemperatureValue() {
+        XCTAssertEqual(mockWeatherModel.currenttemp, "289.53")
+    }
+
     
 }

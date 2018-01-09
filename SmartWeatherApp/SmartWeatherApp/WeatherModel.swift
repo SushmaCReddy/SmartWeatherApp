@@ -14,7 +14,7 @@ class WeatherModel {
     //MARK: - Properties
     
     /// The response dictionary containing the weather information.
-    private var responseDictionary: ResourceDictionary = [:]
+    var responseDictionary: ResourceDictionary = [:]
 
     /// Initializes a new resource dictionary
     ///
@@ -22,7 +22,7 @@ class WeatherModel {
     init(dataItems: ResourceDictionary) {
         self.responseDictionary = dataItems
     }
-    
+    /// Use lazy var to get computed only when accessed
     lazy var city: String = {
         return responseDictionary["name"] as? String ?? ""
     }()
